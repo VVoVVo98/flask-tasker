@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<head>
+    <title>Update Task</title>
+</head>
+<body>
+    <h1>Update Task</h1>
+    
+    <form method="POST" action="/update/{{ task.id }}">
+        <input type="text" name="title" value="{{ task.title }}" required>
+        <textarea name="desc" required>{{ task.desc }}</textarea>
+        <input type="text" name="assigned_to" value="{{ task.assigned_to }}">
+        <button type="submit">Update Task</button>
+    </form>
+    
+    <a href="{{ url_for('index') }}">Back to Tasks</a>
+</body>
+</html>
+{% endblock %}
