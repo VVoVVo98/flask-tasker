@@ -1,20 +1,34 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<head>
-    <title>Update Task</title>
-</head>
-<body>
-    <h1>Update Task</h1>
-    
-    <form method="POST" action="/update/{{ task.id }}">
-        <input type="text" name="title" value="{{ task.title }}" required>
-        <textarea name="desc" required>{{ task.desc }}</textarea>
-        <input type="text" name="assigned_to" value="{{ task.assigned_to }}">
-        <button type="submit">Update Task</button>
+{% block title %}Update Task{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <h1>✏️ Update Task</h1>
+    <p class="subtitle">Modify your task details</p>
+</div>
+
+<div class="form-container">
+    <form method="POST" action="/update/{{ task.id }}" class="task-form">
+        <div class="form-group">
+            <label for="title">Task Title</label>
+            <input type="text" id="title" name="title" value="{{ task.title }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea id="desc" name="desc" required rows="4">{{ task.desc }}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="assigned_to">Assigned To</label>
+            <input type="text" id="assigned_to" name="assigned_to" value="{{ task.assigned_to }}">
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">💾 Update Task</button>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">← Back to Tasks</a>
+        </div>
     </form>
-    
-    <a href="{{ url_for('index') }}">Back to Tasks</a>
-</body>
-</html>
+</div>
 {% endblock %}
