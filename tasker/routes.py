@@ -1,6 +1,7 @@
 from tasker import app, db
 from flask import request, redirect , render_template
 from tasker.models import Task
+from tasker.forms import RegisterForm
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -79,6 +80,11 @@ def mark_improperly(id):
         return redirect('/')
     except:
         return 'There was a problem marking the task'
+    
+@app.route('/register')
+def register_page():
+    form = RegisterForm()
+    return render_template('register.html', form=form)
 
 
 if __name__ == "__main__":

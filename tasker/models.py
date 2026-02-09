@@ -32,16 +32,25 @@ class Task(db.Model):
         print(f"Task {self.id} edited")
 
    
-class User:
-    def __init__(self, id, name, email):
-        self.id = id
-        self.name = name
-        self.email = email
-        self.tasks = []  # List to store assigned tasks
+class User(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    username = db.Column(db.String(length=50), nullable=False, unique=True)
+    email = db.Column(db.String(length=50), nullable=False, unique=True)
+    password = db.Column(db.String(length=30), nullable=False)
+   
     
     def add_task(self, task):
         self.tasks.append(task)
         print(f"Task {task.id} assigned to {self.name}")
+
+    def login(self, email, password):
+        pass
+
+    def logout():
+        pass
+
+    def register():
+        pass
 
 
 with app.app_context():
