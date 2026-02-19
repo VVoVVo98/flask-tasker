@@ -31,16 +31,14 @@ body {
 
 html, body {
     height: 100%;
-}
-
-display: flex;
+    display: flex;
     flex-direction: column;
 }
 
 /* ===== NAVBAR ===== */
 .navbar {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 1rem 0;
     box-shadow: var(--shadow-lg);
     position: sticky;
@@ -66,11 +64,11 @@ display: flex;
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 4rem;
 }
 
 .nav-link {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.3s;

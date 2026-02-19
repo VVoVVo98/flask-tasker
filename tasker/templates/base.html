@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Task Manager{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">📋 Task Manager</div>
+            <div class="nav-logo">Task Manager</div>
             <ul class="nav-menu">
-                <li><a href="{{ url_for('index') }}" class="nav-link">Home</a></li>
+                <li>
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                    <a href="{{ url_for('register_page') }}" class="nav-link">Register</a>
+                </li>
             </ul>
         </div>
     </nav>

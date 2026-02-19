@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="page-header">
-    <h1>📝 Your Tasks</h1>
+    <h1>Your Tasks</h1>
     <p class="subtitle">Manage and track all your tasks in one place</p>
 </div>
 
@@ -24,7 +24,7 @@
             <label for="assigned_to">Assigned To</label>
             <input type="text" id="assigned_to" name="assigned_to" placeholder="Enter person's name">
         </div>
-        <button type="submit" class="btn btn-primary">➕ Add Task</button>
+        <button type="submit" class="btn btn-primary">Add Task</button>
     </form>
 </div>
 
@@ -51,11 +51,11 @@
                 </div>
                 
                 <div class="task-actions">
-                    <a href="{{ url_for('update', id=task.id) }}" class="btn btn-sm btn-edit">✏️ Edit</a>
-                    <a href="{{ url_for('delete', id=task.id) }}" class="btn btn-sm btn-delete" onclick="return confirm('Are you sure?')">🗑️ Delete</a>
+                    <a href="{{ url_for('update', id=task.id) }}" class="btn btn-sm btn-edit">Edit</a>
+                    <a href="{{ url_for('delete', id=task.id) }}" class="btn btn-sm btn-delete" onclick="return confirm('Are you sure?')">Delete</a>
                     {% if task.status == 'pending' %}
-                        <a href="{{ url_for('mark_done', id=task.id) }}" class="btn btn-sm btn-success">✓ Done</a>
-                        <a href="{{ url_for('mark_improperly', id=task.id) }}" class="btn btn-sm btn-warning">⚠️ Improper</a>
+                        <a href="{{ url_for('mark_done', id=task.id) }}" class="btn btn-sm btn-success">Done</a>
+                        <a href="{{ url_for('mark_improperly', id=task.id) }}" class="btn btn-sm btn-warning">Done Improperly</a>
                     {% endif %}
                 </div>
             </div>
@@ -63,7 +63,7 @@
         </div>
     {% else %}
         <div class="empty-state">
-            <p>📭 No tasks yet. Create one to get started!</p>
+            <p>No tasks yet. Create one to get started!</p>
         </div>
     {% endif %}
 </div>
