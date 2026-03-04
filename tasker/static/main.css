@@ -372,16 +372,6 @@ main {
     font-size: 1.25rem;
 }
 
-/* ===== FOOTER ===== */
-.footer {
-    background-color: var(--gray-100);
-    border-top: 1px solid var(--gray-200);
-    padding: 2rem;
-    text-align: center;
-    color: var(--gray-600);
-    margin-top: auto;
-}
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .nav-container {

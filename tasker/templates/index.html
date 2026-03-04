@@ -2,7 +2,7 @@
 
 {% block title %}Task Manager - Home{% endblock %}
 
-{% block body %}
+{% block content %}
 <div class="page-header">
     <h1>Your Tasks</h1>
     <p class="subtitle">Manage and track all your tasks in one place</p>
@@ -46,7 +46,7 @@
                 
                 <div class="task-meta">
                     {% if task.assigned_to %}
-                        <span class="meta-item">👤 {{ task.assigned_to }}</span>
+                        <span class="meta-item">{{ task.assigned_to }}</span>
                     {% endif %}
                 </div>
                 

@@ -18,7 +18,7 @@ class Task(db.Model):
     
     def change_status(self, new_status):
         # Validate status
-        valid_statuses = ['pending', 'done', 'done_improperly'] # tasks can be rated
+        valid_statuses = ['pending', 'done', 'done improperly'] # tasks can be rated
         if new_status not in valid_statuses:
             raise ValueError(f"Status must be one of: {valid_statuses}")
         
@@ -35,8 +35,7 @@ class Task(db.Model):
 class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.Column(db.String(length=50), nullable=False, unique=True)
-    email = db.Column(db.String(length=50), nullable=False, unique=True)
-    password = db.Column(db.String(length=30), nullable=False)
+    password_hash = db.Column(db.String(length=30), nullable=False)
    
     
     def add_task(self, task):

@@ -1,7 +1,8 @@
 from tasker import app, db
-from flask import request, redirect , render_template
-from tasker.models import Task
+from flask import request, redirect , render_template, url_for
+from tasker.models import Task, User
 from tasker.forms import RegisterForm
+from tasker import db
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -73,7 +74,7 @@ def mark_done(id):
 @app.route('/mark_improperly/<int:id>')
 def mark_improperly(id):
     task = Task.query.get_or_404(id)
-    task.status = 'done_improperly'
+    task.status = 'done improperly'
     
     try:
         db.session.commit()
@@ -81,9 +82,16 @@ def mark_improperly(id):
     except:
         return 'There was a problem marking the task'
     
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register_page():
     form = RegisterForm()
+    if form.validate_on_submit():
+        user_to_create=User(username=form.username.data, 
+                            password_hash=form.password1)
+        db.session.add(user_to_create)
+        db.session.commit()
+        return redirect(url_for('index'))
+
     return render_template('register.html', form=form)
 
 
