@@ -1,7 +1,7 @@
 from tasker import app, db
-from flask import request, redirect , render_template, url_for
+from flask import request, redirect , render_template, url_for, flash
 from tasker.models import Task, User
-from tasker.forms import RegisterForm
+from tasker.forms import RegisterForm, LoginForm
 from tasker import db
 
 @app.route('/', methods=['POST', 'GET'])
@@ -87,13 +87,20 @@ def register_page():
     form = RegisterForm()
     if form.validate_on_submit():
         user_to_create=User(username=form.username.data, 
-                            password_hash=form.password1)
+                            password=form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
         return redirect(url_for('index'))
+    if form.errors != {}:
+        for e in form.errors.values():
+            flash(f'there was an error with creating a user: {e}')
 
     return render_template('register.html', form=form)
 
+@app.route('/login', methods=['GET', 'POST'])
+def login_page():
+    form = LoginForm()
+    return render_template('login.html', form=form)
 
 if __name__ == "__main__":
     with app.app_context():

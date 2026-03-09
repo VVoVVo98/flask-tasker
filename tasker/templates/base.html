@@ -14,11 +14,18 @@
                 <li>
                     <a href="{{ url_for('index') }}" class="nav-link">Home</a>
                     <a href="{{ url_for('register_page') }}" class="nav-link">Register</a>
+                    <a href="{{ url_for('login_page') }}" class="nav-link">Login</a>
                 </li>
             </ul>
         </div>
     </nav>
-
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <main class="main-container">
         {% block content %}{% endblock %}
     </main>
