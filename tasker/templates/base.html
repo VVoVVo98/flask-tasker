@@ -13,8 +13,12 @@
             <ul class="nav-menu">
                 <li>
                     <a href="{{ url_for('index') }}" class="nav-link">Home</a>
-                    <a href="{{ url_for('register_page') }}" class="nav-link">Register</a>
-                    <a href="{{ url_for('login_page') }}" class="nav-link">Login</a>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('logout_page') }}" class="nav-link">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('register_page') }}" class="nav-link">Register</a>
+                        <a href="{{ url_for('login_page') }}" class="nav-link">Login</a>
+                    {% endif %}
                 </li>
             </ul>
         </div>
